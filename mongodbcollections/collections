@@ -1,1 +1,2 @@
  Thes collections can be modified based on app requirements.   accounts = user schema
+ In Mongodb on my desktop I created a dbs = APWposts with a Admin user apwadmin .  I am not sure if we need the admin account 
