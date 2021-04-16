@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "60786337b10bc9e3e378f063"
+  },
+  "account_id": 12345,
+  "account_name": "mattanglim",
+  "account_password": "abc123",
+  "account_email": "mattang@gmail.com",
+  "account_created": {
+    "$timestamp": {
+      "t": 0,
+      "i": 0
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6078a709e75e56df35bb0c56"
+  },
+  "account_id": 7676,
+  "account_name": "John Smith",
+  "account_password": "Sjoh124",
+  "account_email": "john.smith@gmail.com",
+  "account_created": {
+    "$timestamp": {
+      "t": 0,
+      "i": 0
+    }
+  }
+}]
