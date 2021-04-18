@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 const User = require('../models/user.js')
 
 router.get('/login',(req,res)=>{
@@ -45,7 +46,23 @@ router.post('/signup',(req,res)=>{
 					email: email,
 					password: password
 				})
-			}
+
+				bcrypt.genSalt(10,(err,salt) => 
+					bcrypt.hash(newUser.password, salt,
+						(err, hash) => {
+							if(err) throw err
+
+								newUser.password = hash
+
+							newUser.save()
+							.then((value) => {
+								console.log(value)
+								res.redirect('/users/login')
+							})
+
+							.catch(value => console.log(value))
+						}))
+				}
 		})
 	}
 })
