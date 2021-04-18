@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user.js')
+const saltRounds = 10
 
 router.get('/login',(req,res)=>{
     res.render('login')
@@ -22,8 +23,8 @@ router.post('/signup',(req,res)=>{
 		errors.push({msg: 'Passwords do not match!'})
 	}
 
-	if(password.length < 8) {
-		errors.push({msg: 'Password must be 8 characters long!'})
+	if(password.length < 5) {
+		errors.push({msg: 'Password must be at least 5 characters long!'})
 	}
 
 	if(errors.length > 0) {
@@ -47,21 +48,23 @@ router.post('/signup',(req,res)=>{
 					password: password
 				})
 
-				bcrypt.genSalt(10,(err,salt) => 
+				bcrypt.genSalt(saltRounds,(err,salt) => 
 					bcrypt.hash(newUser.password, salt,
 						(err, hash) => {
 							if(err) throw err
 
 								newUser.password = hash
 
-							newUser.save()
-							.then((value) => {
-								console.log(value)
-								res.redirect('/users/login')
-							})
+							newUser
+								.save()
+								.then((value) => {
+									console.log(value)
+									req.flash('success_msg', 'Signup Successful!')
+									res.redirect('/users/login')
+								})
 
-							.catch(value => console.log(value))
-						}))
+								.catch(value => console.log(value))
+							}))
 				}
 		})
 	}
