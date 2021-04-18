@@ -1,0 +1,39 @@
+ Thes collections can be modified based on app requirements.   accounts = user schema
+ In Mongodb on my desktop I created a dbs = APWposts 
+ Admin user account =  apwadmin .  The admin user account is at the database level not within the accounts/user collection 
+ 
+ >use APWposts
+ switched to db APWposts
+ >db
+ APWposts
+ >show collections
+ accounts
+ posts
+ thread
+ >db.createUser(
+ {user:"apwadmin",
+ pwd:"apwaccount",
+ roles["readWrite"]
+ }
+ )
+ 
+ 
+  db.getUsers()
+[
+        {
+                "_id" : "APWposts.apwadmin",
+                "userId" : UUID("7972c2af-4460-4e6e-bcfb-fe106fbb0611"),
+                "user" : "apwadmin",
+                "db" : "APWposts",
+                "roles" : [
+                        {
+                                "role" : "readWrite",
+                                "db" : "APWposts"
+                        }
+                ],
+                "mechanisms" : [
+                        "SCRAM-SHA-1",
+                        "SCRAM-SHA-256"
+                ]
+        }
+]   

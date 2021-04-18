@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "60786ab9b10bc9e3e378f06c"
+  },
+  "thread_id": 1,
+  "thread_subject": "database mongodb-git",
+  "thread_created": {
+    "$timestamp": {
+      "t": 0,
+      "i": 0
+    }
+  },
+  "account_id": 12345
+},{
+  "_id": {
+    "$oid": "6078a84fe75e56df35bb0c58"
+  },
+  "thread_id": 1,
+  "thread_subject": "Another way to add a collection",
+  "thread_created": {
+    "$timestamp": {
+      "t": 0,
+      "i": 0
+    }
+  },
+  "account_id": 7676
+}]
