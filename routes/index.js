@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { ensureAuthenticated } = require('../config/auth');
 const router = express.Router();
 
 router.get('/', (req,res) => {
@@ -9,7 +10,7 @@ router.get('/signup', (req,res)=>{
     res.render('signup')
 })
 
-router.get('/dashboard', (req,res) => {
+router.get('/dashboard', ensureAuthenticated, (req,res) => {
     res.render('dashboard')
 })
 
