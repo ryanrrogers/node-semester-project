@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user.js')
+const passport = require('../config/passport.js')
 const saltRounds = 10
 
 router.get('/login',(req,res)=>{
@@ -70,10 +71,15 @@ router.post('/signup',(req,res)=>{
 	}
 })
 
-router.post('/login',(req,res,next)=>{
+router.post('/login',(req,res,next) => {
+	passport.authenticate('local', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/users/login',
+		failureFlash: true,
+	}) (req, res, next)
   })
 
 
-router.get('/logout',(req,res)=>{
+router.get('/logout',(req,res) => {
  })
 module.exports  = router
