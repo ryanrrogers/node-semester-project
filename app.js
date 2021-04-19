@@ -7,7 +7,8 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
 
-const routes = require("./config/passport")(passport)
+require("./config/passport")(passport)
+//require('./routes/index.js')(passport)
 
 mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('App Connected!'))

@@ -9,20 +9,20 @@ module.exports = function(passport) {
                 User.findOne({email: email})
                 .then((user)=>{
                  if(!user) {
-                     return done(null, false, {message: 'that email is not registered'})
+                     return done(null, false, {message: 'that email is not registered!'})
                  }
                  //match pass
-                 bcrypt.compare(password, user.password,( err, isMatch)=>{
+                 bcrypt.compare(password, user.password,( err, isMatch) => {
                      if(err) throw err
 
                      if(isMatch) {
                          return done(null,user)
                      } else {
-                         return done(null, false,{message: 'pass incorrect'})
+                         return done(null, false,{message: 'password is incorrect'})
                      }
                  })
                 })
-                .catch((err)=> {console.log(err)})
+                .catch((err) => {console.log(err)})
         })
         
     )
